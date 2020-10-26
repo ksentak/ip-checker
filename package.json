@@ -1,0 +1,23 @@
+{
+  "name": "ip-checker",
+  "version": "1.0.0",
+  "description": "An application that grabs the IP address of the user or the users searched IP/domain",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksentak/ip-checker.git"
+  },
+  "author": "Keaton Sentak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksentak/ip-checker/issues"
+  },
+  "homepage": "https://github.com/ksentak/ip-checker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
