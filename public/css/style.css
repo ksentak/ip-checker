@@ -75,6 +75,11 @@ body {
 	cursor: text;
 }
 
+#error {
+	text-align: center;
+	color: red;
+}
+
 .info {
 	width: 80%;
 	height: 120px;
