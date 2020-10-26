@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const PORT = process.env.PORT || 8080;
 const fetch = require('node-fetch');
+const PORT = process.env.PORT || 8080;
 require('dotenv').config();
 
 app.listen(PORT, function () {
@@ -11,6 +11,7 @@ app.listen(PORT, function () {
 
 app.use('/', express.static(path.join(__dirname, '/public')));
 
+// Initial api search
 app.get('/api', async (req, res) => {
 	try {
 		const apiKey = process.env.IPIFYKEY;
@@ -23,11 +24,13 @@ app.get('/api', async (req, res) => {
 	}
 });
 
+// Sends mapbox token
 app.get('/grabToken', (req, res) => {
 	const mapboxToken = process.env.MAPBOXTOKEN;
 	res.send({ key: mapboxToken });
 });
 
+// Ip address search
 app.get('/api/ip/:ip', async (req, res) => {
 	try {
 		const apiKey = process.env.IPIFYKEY;
@@ -41,6 +44,7 @@ app.get('/api/ip/:ip', async (req, res) => {
 	}
 });
 
+// Domain search
 app.get('/api/domain/:domain', async (req, res) => {
 	try {
 		const apiKey = process.env.IPIFYKEY;
