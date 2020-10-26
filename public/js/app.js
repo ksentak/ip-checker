@@ -3,17 +3,17 @@ let myMap = L.map('mapid');
 
 // Function that clears search input
 const clearInput = () => {
-	$('.search-input').val('');
+	document.querySelector('.search-input').value = '';
 };
 
 clearInput();
 
 // Function that clears all data from the info div
 const clearSearch = () => {
-	$('.get-ip').empty();
-	$('.get-location').empty();
-	$('.get-timezone').empty();
-	$('.get-isp').empty();
+	document.querySelector('.get-ip').innerHTML = '';
+	document.querySelector('.get-location').innerHTML = '';
+	document.querySelector('.get-timezone').innerHTML = '';
+	document.querySelector('.get-isp').innerHTML = '';
 };
 
 // Function that generates inital map
@@ -53,12 +53,14 @@ const initialSearch = async () => {
 		const res = await fetch(searchUrl);
 		const ipData = await res.json();
 
-		$('.get-ip').append(ipData.ip);
-		$('.get-location').append(
-			ipData.location.city + ', ' + ipData.location.region
-		);
-		$('.get-timezone').append('UTC ' + ipData.location.timezone);
-		$('.get-isp').append(ipData.as.name);
+		document.querySelector('.get-ip').append(ipData.ip);
+		document
+			.querySelector('.get-location')
+			.append(ipData.location.city + ', ' + ipData.location.region);
+		document
+			.querySelector('.get-timezone')
+			.append('UTC ' + ipData.location.timezone);
+		document.querySelector('.get-isp').append(ipData.as.name);
 		initialMap(ipData.location.lat, ipData.location.lng);
 	} catch (err) {
 		document.getElementById('error').innerHTML =
@@ -72,7 +74,7 @@ initialSearch();
 const ipSearch = async () => {
 	clearSearch();
 	const ipRegex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-	const searchInput = $('.search-input').val();
+	const searchInput = document.querySelector('.search-input').value;
 
 	if (searchInput.match(ipRegex)) {
 		try {
@@ -80,11 +82,13 @@ const ipSearch = async () => {
 			const res = await fetch(searchUrl);
 			const data = await res.json();
 
-			$('.get-ip').append(data.ip),
-				$('.get-location').append(data.location.city),
-				$('.get-timezone').append('UTC ' + data.location.timezone),
-				$('.get-isp').append(data.as.name),
-				updateMap(data.location.lat, data.location.lng);
+			document.querySelector('.get-ip').append(data.ip);
+			document.querySelector('.get-location').append(data.location.city);
+			document
+				.querySelector('.get-timezone')
+				.append('UTC ' + data.location.timezone);
+			document.querySelector('.get-isp').append(data.as.name);
+			updateMap(data.location.lat, data.location.lng);
 		} catch (err) {
 			document.getElementById('error').innerHTML =
 				'There was an error processing your request';
@@ -95,11 +99,13 @@ const ipSearch = async () => {
 			const res = await fetch(searchUrl);
 			const data = await res.json();
 
-			$('.get-ip').append(data.ip),
-				$('.get-location').append(data.location.city),
-				$('.get-timezone').append('UTC ' + data.location.timezone),
-				$('.get-isp').append(data.as.name),
-				updateMap(data.location.lat, data.location.lng);
+			document.querySelector('.get-ip').append(data.ip);
+			document.querySelector('.get-location').append(data.location.city);
+			document
+				.querySelector('.get-timezone')
+				.append('UTC ' + data.location.timezone);
+			document.querySelector('.get-isp').append(data.as.name);
+			updateMap(data.location.lat, data.location.lng);
 		} catch (err) {
 			document.getElementById('error').innerHTML =
 				'There was an error processing your request';
@@ -108,7 +114,7 @@ const ipSearch = async () => {
 };
 
 // Runs ipSearch function on click
-$('.submit-btn').click((e) => {
+document.querySelector('.submit-btn').addEventListener('click', (e) => {
 	e.preventDefault();
 	ipSearch();
 });
