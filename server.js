@@ -9,7 +9,7 @@ app.listen(PORT, function () {
   console.log('Server listening on port ' + PORT);
 });
 
-app.use('/', express.static('public'));
+app.use('/', express.static(path.join(__dirname, '/public')));
 
 // Initial api search
 app.get('/api', async (req, res) => {
