@@ -2,7 +2,7 @@
 
 #### DEPLOYED APP:
 
-## https://ip-checker01.herokuapp.com/
+## [https://ip-checker01.herokuapp.com/](https://ip-checker.onrender.com/)
 
 ![App Homepage](./public/img/app-screenshots/ip-screenshot.png)
 
